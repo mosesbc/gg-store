@@ -1,25 +1,37 @@
-import React from 'react';
+import React from "react";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./theme";
+import HomePage from "./hompage.component";
+import Header from "./components/header/header.component";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import FootBar from "./components/foot-bar/foot-bar.component";
+
+/*
 import logo from './logo.svg';
 import './App.css';
+*/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage}></Route>
+          <Route path="/info" component={() => <div>info</div>}></Route>
+          <Route path="/products" component={() => <div>products</div>}></Route>
+          <Route path="/cart" component={() => <div>cart</div>}></Route>
+          <Route path="/profile" component={() => <div>profile</div>}></Route>
+          <Route path="/message" component={() => <div>messages</div>}></Route>
+          <Route path="/aboutus" component={() => <div>about us</div>}></Route>
+          <Route
+            path="/contact"
+            component={() => <div>contact us</div>}
+          ></Route>
+        </Switch>
+        <FootBar />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
