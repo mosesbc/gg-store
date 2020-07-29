@@ -52,10 +52,10 @@ export default function Header(props) {
 
   const matchesXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const handleAccMenuOpen = (event) => {
+  const handleProfileMenuOpen = (event) => {
     setProfileAnchorEl(event.currentTarget);
   };
-  const handleAccMenuClose = () => {
+  const handleProfileMenuClose = () => {
     setProfileAnchorEl(null);
   };
 
@@ -75,10 +75,10 @@ export default function Header(props) {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
-      onClose={handleAccMenuClose}
+      onClose={handleProfileMenuClose}
     >
-      <MenuItem onClick={handleAccMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleAccMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleProfileMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -88,7 +88,7 @@ export default function Header(props) {
       id={infoMenuId}
       open={isInfoMenuOpen}
       anchorEl={infoAnchorEl}
-      onClose={handleAccMenuClose}
+      onClose={handleProfileMenuClose}
       MenuListProps={{ onMouseLeave: handleInfoMenuClose }}
       keepMounted
     >
@@ -196,7 +196,7 @@ export default function Header(props) {
                 aria-label="account of current user"
                 aria-controls={profileMenuId}
                 aria-haspopup="true"
-                onClick={handleAccMenuOpen}
+                onClick={handleProfileMenuOpen}
                 color="inherit"
               >
                 <AccountCircle />
