@@ -1,8 +1,18 @@
 import React from "react";
-import { Grid, Typography, Hidden } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Hidden,
+  Card,
+  Paper,
+  Box,
+  fade,
+  useMediaQuery,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import Carousel from "./components/carousel/carousel.component";
 import logo from "./assets/logo.png";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 /*
 https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1280px-Good_Food_Display_-_NCI_Visuals_Online.jpg
@@ -72,10 +82,52 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
     },
   },
+  //border: `1px solid ${fade(theme.palette.primary.contrastText, 0.15)}`,
+  benefits: { border: `1px solid ${fade(theme.palette.primary.main, 0.15)}` },
+  benefit: {
+    flexBasis: "15%",
+    margin: "1em",
+    padding: "1em",
+    textAlign: "center",
+    backgroundColor: fade(theme.palette.primary.main, 0.95),
+    color: theme.palette.primary.contrastText,
+    [theme.breakpoints.down("xs")]: {
+      margin: "0.1em",
+      padding: "0.1em",
+    },
+  },
 }));
 
+const benefitsData = [
+  "Moneback gurarantee",
+  "Free delivery within Metro Manila",
+  "1 Year Warranty",
+];
+
 const HomePage = () => {
+  const theme = useTheme();
   const classes = useStyles();
+  const matchesXsDown = useMediaQuery(theme.breakpoints.down("xs"));
+  const benefits = (
+    <Box
+      display="flex"
+      alignContent="center"
+      justifyContent="center"
+      p={1}
+      flexDirection={matchesXsDown ? "column" : "row"}
+      className={classes.benefits}
+    >
+      {benefitsData.map((benefit, idx) => (
+        <Box key={idx} className={classes.benefit} clone>
+          <Paper>
+            <Typography variant={matchesXsDown ? "body2" : "h6"}>
+              {benefit}
+            </Typography>
+          </Paper>
+        </Box>
+      ))}
+    </Box>
+  );
   return (
     <React.Fragment>
       <Grid
@@ -98,6 +150,7 @@ const HomePage = () => {
           <Carousel photos={photos} />
         </Grid>
       </Grid>
+      <Grid item>{benefits}</Grid>
 
       <div className="homepage">
         <div className="directory-menu">

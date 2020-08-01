@@ -12,7 +12,7 @@ export default function Carousel({ photos }) {
   return (
     <MuiCarousel>
       {photos.map((photo, idx) => (
-        <Card key={idx} elevation={10} className={classes.crslCard}>
+        <Card key={idx} elevation={0} className={classes.crslCard}>
           <CardMedia
             className={classes.crslMedia}
             image={photo.url}
