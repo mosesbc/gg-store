@@ -4,10 +4,11 @@ import "./index.css";
 import App from "./App";
 //import * as serviceWorker from './serviceWorker'; --temp comment by moses
 
+//temp changed Strict mode to Fragment to remove findDomNode warning
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById("root")
 );
 /* -- temp comment by moses

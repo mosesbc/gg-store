@@ -181,7 +181,7 @@ export default function Header(props) {
   );
 
   return (
-    <div className={classes.grow}>
+    <React.Fragment>
       <ElevationScroll {...props}>
         <AppBar position="fixed">
           <Toolbar>
@@ -208,6 +208,6 @@ export default function Header(props) {
       {renderProfileMenu}
       {renderInfoMenu}
       <div className={classes.offsetDiv}></div>
-    </div>
+    </React.Fragment>
   );
 }
