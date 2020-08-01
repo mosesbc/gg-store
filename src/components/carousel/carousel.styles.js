@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "56.25%", // 16:9
   },
   crslCard: {
-    borderRadius: "25px",
+    borderRadius: "10px",
     [theme.breakpoints.down("xs")]: {
       borderRadius: "unset",
     },
